@@ -1,9 +1,12 @@
 ---
 title:  "Welcome to Jekyll!"
 date:   2022-03-12 18:34:48 +0100
-categories: jekyll update
+categories: [jekyll update]
 permalink: /welcome/
 layout: home
+tags: [home]     # TAG names should always be lowercase
+comments: false
+pin: true
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
