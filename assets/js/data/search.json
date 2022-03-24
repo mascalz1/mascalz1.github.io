@@ -1,0 +1,274 @@
+[
+  
+  {
+    "title": "sqlcmd command &amp; paste",
+    "url": "/posts/sqlcmd/",
+    "categories": "command&paste",
+    "tags": "sqlcmd, discovery, mssql, windows, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "SQLCMD:sqlcmd -S &amp;lt;server URL&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt;;1&amp;gt; select @@version2&amp;gt; go1&amp;gt; select db_name();2&amp;gt; go1&amp;gt; select host_name();2&amp;gt; go1&amp;gt; select loginname from syslogins where sysadmin = 1;2&amp;gt; go1&amp;gt; select name from sys.databases;2&amp;gt; go1&amp;gt; select name,password_hash from master.sys.sql_logins;2&amp;gt; go1&amp;gt; select name, CONVERT(INT, ISNULL(value, value_in_use)) as IsConfigured FROM sys.configurations WHERE name = &#39;xp_cmdshell&#39;;2&amp;gt; goHome of the tool"
+  },
+  
+  {
+    "title": "smbmap command &amp; paste",
+    "url": "/posts/smbmap/",
+    "categories": "command&paste",
+    "tags": "smbmap, discovery, smb, windows, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Windows Recon: SMBmap host discovery:Using the smbmap tool to enumerate the target machine service  allows users to enumerate samba share  allows file upload/download/delete  permission enumeration (writable share, meet Metasploit)  etc.smbmap -u guest -p &#39;&#39; -d . -H 10.10.10.50 #access SMB server as guest user;smbmap -u Administrator -p &#39;valid_passwd&#39; -d . -H 10.10.10.50 #access SMB server as Administrator (usually READ and WRITE permissions);smbmap -H 10.10.10.50 -u Administrator -p &#39;valid_passwd&#39; -x &#39;ipconfig&#39; #execute command;smbmap -H 10.10.10.50 -u Administrator -p &#39;valid_passwd&#39; -L #list available drives;smbmap -H 10.10.10.50 -u Administrator -p &#39;valid_passwd&#39; -r &#39;C$&#39; #list contents of C:\\ drive;smbmap -H 10.10.10.50 -u Administrator -p &#39;valid_passwd&#39; --upload &#39;/tmp/file_to_upload&#39; &#39;C$\\folder&#39; #file upload;smbmap -H 10.10.10.50 -u Administrator -p &#39;valid_passwd&#39; --download &#39;C$\\file_to_download&#39; #file download;Home of the smbtool"
+  },
+  
+  {
+    "title": "nmap command &amp; paste",
+    "url": "/posts/nmap/",
+    "categories": "command&paste",
+    "tags": "nmap, discovery, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Recon: nmap host discovery:nmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) portsCheck out the nmap GUI version of the Nmap tool with ability to store scan data into the database, plot the network diagram based on the scan result such as services, hostname, etc.."
+  },
+  
+  {
+    "title": "nmap smb command &amp; paste",
+    "url": "/posts/nmap-smb/",
+    "categories": "command&paste",
+    "tags": "nmap, smb, discovery, windows, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Windows recon: nmap host discovery:nmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) portsuseful net use commands:net use * /deletenet use Z: \\\\10.10.10.50\\C$ valid_passwd /user:valid_usernameFingerprint the SMB service running the nmap script to enumerate the windows target machine:nmap -p445 --script smb-protocols 10.10.10.50 #identify SMB protocol dialects;nmap -p445 --script smb-security-mode 10.10.10.50 #find SMB security level information;nmap -p445 --script smb-enum-sessions 10.10.10.50 #enumerate active sessions, shares, windows users, domains, services, etc.;nmap -p445 --script smb-enum-shares 10.10.10.50 #enumarate all available shares;enumerating using valid credential:nmap -p445 --script smb-enum-sessions --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50enumarate all available shares:nmap -p445 --script smb-enum-shares --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50enumarate users:nmap -p445 --script smb-enum-users --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50enumarate available domains:nmap -p445 --script smb-enum-domains --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50enumarate user groups:nmap -p445 --script smb-enum-groups --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50enumarate services:nmap -p445 --script smb-enum-services --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50enumarate all shared folders and drives and run the ls command in every shares:nmap -p445 --script smb-enum-shares,smb-ls --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50get server stats:nmap -p445 --script smb-server-stats --script-args smbusername=valid_username,smbpassword=valid_passwd 10.10.10.50"
+  },
+  
+  {
+    "title": "nmap mssql command &amp; paste",
+    "url": "/posts/nmap-mssql/",
+    "categories": "command&paste",
+    "tags": "nmap, discovery, mssql, windows, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Run Nmap scripts to enumerate the Windows target machine MSSQL service.nmap -p1433 --script ms-sql-info 10.10.10.50 #get MYSQL info;nmap -p1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433 10.10.10.50 #check NTLM auth;nmap -p1433 --script ms-sql-brute --script-args userdb=/root/Desktop/wordlist/common_users.txt,passdb=/root/Desktop/wordlist/common_password.txt 10.10.10.50 #bruteforce SQL username/password;nmap -p1433 --script ms-sql-empty-password 10.10.10.50 #check if sa has empty password;nmap -p1433 --script ms-sql-query --script-args mssql.username=admin,mssql.password=valid_password,ms-sql-query.query=&quot;SELECT * FROM master..syslogins&quot; 10.10.10.50 -oN output.txt #all user login;nmap -p1433 --script ms-sql-dump-hashes --script-args mssql.username=admin,mssql.password=valid_password 10.10.10.50 #all user hashes;nmap -p1433 --script ms-sql-xp-cmdshell --script-args mssql.username=admin,mssql.password=valid_password,ms-sql-xp-cmdshell.cmd=&quot;ipconfig&quot; 10.10.10.50 #execute ipconfig commandnmap -p1433 --script ms-sql-xp-cmdshell --script-args mssql.username=admin,mssql.password=valid_password,ms-sql-xp-cmdshell.cmd=&quot;type c:\\file_to_read_from&quot; 10.10.10.50 #read file"
+  },
+  
+  {
+    "title": "nmap iis command &amp; paste",
+    "url": "/posts/nmap-iis/",
+    "categories": "command&paste",
+    "tags": "nmap, discovery, iis, windows, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Run Nmap scripts to enumerate the Windows target machine IIS service.nmap -p80 -sV --script http-enum 10.10.10.50 #get IIS info and potentially interesting folders;nmap -p80 -sV --script http-headers 10.10.10.50 #HEAD request on root folder (“/”);nmap -p80 -sV --script http-methods --script-args http-methods.url-path=/webdav/ 10.10.10.50  #check methods on folder;nmap -p80 -sV --script http-webdav-scan --script-args http-methods.url-path=/webdav/ 10.10.10.50 #run webdav scan on folder;"
+  },
+  
+  {
+    "title": "mssql-cli command &amp; paste",
+    "url": "/posts/mssql-cli/",
+    "categories": "command&paste",
+    "tags": "mssql-cli, discovery, mssql, windows, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Use the command below to connect to your MSSQL server:mssql-cli -S &amp;lt;server URL&amp;gt; -d &amp;lt;database name&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt;;Use the MSSQL-CLI to connect to the remote MSSQL service and discover all databases, versioning, hostname, high privileged users, users hashes, etc.python3 -m mssqlcli.main -S 10.10.10.50 -U sa -P &amp;lt;password&amp;gt;;master&amp;gt; select @@version;master&amp;gt; select host_name();master&amp;gt; select loginname from syslogins where sysadmin = 1;master&amp;gt; select name from sys.databases;master&amp;gt; select * from sysusers;master&amp;gt; select name, password_hash from master.sys.sql_logins;master&amp;gt; select name, CONVERT(INT, ISNULL(value, value_in_use)) as IsConfigured FROM sys.configurations WHERE name = &#39;xp_cmdshell&#39;;master&amp;gt; EXEC sp_configure &#39;show advanced options&#39;, 1;RECONFIGURE;exec SP_CONFIGURE &#39;xp_cmdshell&#39;, 1;RECONFIGUREmaster&amp;gt; EXEC xp_cmdshell &quot;command_to_execute&quot;Home of the tool"
+  },
+  
+  {
+    "title": "IIS command &amp; paste",
+    "url": "/posts/iis/",
+    "categories": "command&paste",
+    "tags": "discovery, iis, windows, reconnaissance",
+    "date": "2022-03-14 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Run Nmap scripts to enumerate the Windows target machine IIS service.nmap -p80 -sV --script http-enum 10.10.10.50 #get IIS info and potentially interesting folders;nmap -p80 -sV --script http-headers 10.10.10.50nmap -p80 -sV --script http-methods --script-args http-methods.url-path=/webdav/ 10.10.10.50  #check methods on folder;nmap -p80 -sV --script http-webdav-scan --script-args http-methods.url-path=/webdav/ 10.10.10.50 #run webdav scan on folder;"
+  },
+  
+  {
+    "title": "aircrack-ng command &amp; paste",
+    "url": "/posts/aircrack-ng/",
+    "categories": "command&paste",
+    "tags": "aircrack, discovery, scanner, pcap, wifi",
+    "date": "2022-03-14 09:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Use aircrack-ng to assess WiFi network security:aircrack-ng -w password-lists.txt -b BSSID recorded_traffic.pcap #figure out the passphrase using the password-lists.txt dictionaryHome of the tool"
+  },
+  
+  {
+    "title": "wifi command &amp; paste",
+    "url": "/posts/wifi-recon/",
+    "categories": "command&paste",
+    "tags": "wifi, reconnaissance",
+    "date": "2022-03-14 09:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Use airodump-ng and Horst to analyze the live WiFi traffic:#iwconfig #check the wireless card#ip link set wlan0 down#iw dev wlan0 set monitor mode#ip link set wlan0 up#iw dev wlan0 set channel 10#aireplay-ng --test wlan0 #testing the device on channel 10airodump-ng wlan0 #figure out BSSID, SID, connected stations, etc.airodump-ng --band abg wlan0 #figure out BSSID, SID, connected stations, etc on all bands (default only 2.4).airodump-ng --channel 3 wlan0 #sniffing on channel 3airodump-ng --channel 3 --essid WHATSOVER wlan0 #sniffing on channel 3 filtering by essidairodump-ng --channel 3 --encrypt WPA1 wlan0 #sniffing on channel 3 only for encryption WPA1Home of the WiFi tools:  airodump-ng  horst  aircrack-ng  hostapd  wpa_supplicant  monitor_mode"
+  },
+  
+  {
+    "title": "wireshark command &amp; paste",
+    "url": "/posts/wireshark/",
+    "categories": "command&paste",
+    "tags": "wireshark, pcap, networking",
+    "date": "2022-03-14 09:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Filtering to figure out the traffic of interest:imap || pop || sip || irc #look for commonly used communication protocols e.g. imap, pop, sip, ircsip.Method==MESSAGE #extract SIP messages from the traffichttp.request.method==GET #browsing activity by means of the GET methodWireshark display filter syntax and reference here."
+  },
+  
+  {
+    "title": "powershell network scanner command &amp; paste",
+    "url": "/posts/powershell/",
+    "categories": "command&paste",
+    "tags": "powershell, discovery, scanner, windows, reconnaissance, networking",
+    "date": "2022-03-14 09:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Windows Recon: PowerShell network scanner:Using the tool to discover all available live hosts  powerful asynchronous IPv4 network scanner for PowerShell;  scan every IPv4 range;  scan an entire subnet based on an IPv4 address;bypass execution policypowershell -ep bypassPS&amp;gt; .\\IPv4NetworkScan.ps1 -StartIPv4Address 10.10.10.0 -EndIPv4Address 10.10.10.20 #provides also hostnamesPS&amp;gt; .\\IPv4NetworkScan.ps1 -IPv4Address 10.10.10.0 -Mask 255.255.255.0 -DisableDNSResolving #doesn’t resolve the addressesPS&amp;gt; .\\IPv4NetworkScan.ps1 -IPv4Address 10.10.10.0 -CIDR 20 -EnableMACResolving #reveals MAC and VendorHome of the toolYou might need PS on Linux"
+  },
+  
+  {
+    "title": "Welcome to CSS",
+    "url": "/posts/welcome-to-css/",
+    "categories": "blog",
+    "tags": "home",
+    "date": "2022-03-12 18:34:48 +0100",
+    
+
+
+
+
+
+    "snippet": "You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.Jekyll requires blog post files to be named according to the following format:YEAR-MONTH-DAY-title.MARKUPWhere YEAR is a four-digit number, MONTH and DAY are both two-digit numbers, and MARKUP is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.Jekyll also offers powerful support for code snippets:def print_hello(name)  puts &quot;Hi, #{name}&quot;endprint_hi(&#39;Tom&#39;)#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.Check out the Jekyll docs for more info on how to get the most out of Jekyll. File all bugs/feature requests at Jekyll’s GitHub repo. If you have questions, you can ask them on Jekyll Talk."
+  },
+  
+  {
+    "title": "metasploit command &amp; paste",
+    "url": "/posts/metasploit/",
+    "categories": "command&paste",
+    "tags": "metasploit",
+    "date": "2022-03-12 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "The penetration testing framework:curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &amp;gt; msfinstall &amp;amp;&amp;amp; \\  chmod 755 msfinstall &amp;amp;&amp;amp; \\  ./msfinstall;Home of the msploit"
+  },
+  
+  {
+    "title": "metasploit mssql command &amp; paste",
+    "url": "/posts/metasploit-mssql/",
+    "categories": "command&paste",
+    "tags": "metasploit, mssql",
+    "date": "2022-03-12 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "#msfconsole -qmsf&amp;gt; use auxiliary/scanner/mssql/mssql_loginmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; set USER_FILE /root/Desktop/wordlist/list_of_users.txtmsf&amp;gt; set PASS_FILE /root/Desktop/wordlist/list_of_passwords.txtmsf&amp;gt; set VERBOSE falsemsf&amp;gt; exploitEnumerating logins:#msfconsole -qmsf&amp;gt; use auxiliary/admin/mssql/mssql_enum_sql_loginsmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; exploitEnumerating all targets machine accounts:#msfconsole -qmsf&amp;gt; use auxiliary/admin/mssql/mssql_enum_domain_accountmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; exploitCommands via xp_cmdshell:#msfconsole -qmsf&amp;gt; use auxiliary/admin/mssql/mssql_execmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; set CMD whoamimsf&amp;gt; exploit"
+  },
+  
+  {
+    "title": "kali command &amp; paste",
+    "url": "/posts/kali/",
+    "categories": "command&paste",
+    "tags": "kali, linux",
+    "date": "2022-03-10 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "The id command displays the identity of the user running the session along with the list of groups they belong to$ iduid=1000(kali) gid=1000(kali) groups=1000(kali),27(sudo)The uname -a command returns a single line documenting the kernel name (Linux), the hostname, the kernel release, the kernel version, the machine type (an architecture string such as x86_64), and the name of the operating system (GNU/Linux).$ uname -aLinux kali 5.8.0-kali3-amd64 #1 SMP Debian 5.8.14-1kali1 (2020-10-13) x86_64 GNU/LinuxThe ps aux command lists the processes currently running and helps to identify them by showing their PID. Once you know the PID of a process, the kill -signal pid command allows you to send it a signal (if you own the process).The jobs command lists the processes running in the background; running fg %job-number (for foreground) restores a job to the foreground. When a command is running in the foreground (either because it was started normally, or brought back to the foreground with fg), the Control+Z key combination pauses the process and resumes control of the command line. The process can then be restarted in the background with bg %job-number (for background).You can retrieve the kernel logs with the dmesg command. Systemd’s journal also stores multiple logs (stdout/stderr output of services, syslog messages, kernel logs) and makes it easy to query them with journalctl.(ex: journalctl -u ssh.service).The find directory criteria command searches for files in the hierarchy under directory according to several criteria.$ find /etc -name hosts/etc/hosts/etc/avahi/hosts$ find /etc -name &quot;hosts*&quot;/etc/hosts/etc/hosts.allow/etc/hosts.deny/etc/avahi/hostslspci lists PCI devices, lsusb lists USB devices, and lspcmcia lists PCMCIA cards (pcmciautils must be installed with apt update followed by apt install pcmciautils).Job controlkali@kali:~$ ping -i 10 localhost &amp;amp;[1] 3605kali@kali:~$ ping -i 10 127.0.0.1 &amp;amp;[2] 3606kali@kali:~$ jobs -l[1]-  3605 Running                 ping -i 10 localhost &amp;amp;[2]+  3606 Running                 ping -i 10 127.0.0.1 &amp;amp;kali@kali:~$ kill %1kali@kali:~$ jobs -l[1]-  3605 Terminated              ping -i 10 localhost[2]+  3606 Running                 ping -i 10 127.0.0.1 &amp;amp;kali@kali:~$ kill %2kali@kali:~$ jobs -l[2]+  3606 Terminated              ping -i 10 127.0.0.1#find out the type of CPU on your Kali host:kali@kali:~$ sudo dmesg | grep CPU0:#info regarding the Ethernet adapter:kali@kali:~$ lspci | grep Ethernet#info on your Graphics card:kali@kali:~$ lspci -v -s `lspci | grep VGA | cut -f1 -d\\ `#to find the kernel version:kali@kali:~$ uname -r#how much memory is free:kali@kali:~$ free#how much disk usage is free on each partition:kali@kali:~$ df#start sshd:kali@kali:~$ sudo systemctl start ssh#enable sshd at boot:kali@kali:~$ sudo systemctl enable ssh#change the default password and generate new SSH host keys:kali@kali:~$ passwdkali@kali:~$ sudo rm /etc/ssh/ssh_host_*kali@kali:~$ sudo dpkg-reconfigure openssh-serverkali@kali:~$ sudo service ssh restart#start up Apache and Postgres:kali@kali:~$ sudo systemctl start apache2kali@kali:~$ sudo systemctl start postgresql#create a standard user account:kali@kali:~$ sudo adduser usernamekali@kali:~$ sudo passwd username#add the new user to the sudo group:kali@kali:~$ sudo usermod -a -G sudo username#change the default login shell to be bash:kali@kali:~$ sudo chsh -s /bin/bash username#stop the Network Manager service and completely disable it at boot time:kali@kali:~$ sudo systemctl stop NetworkManager.servicekali@kali:~$ sudo systemctl disable NetworkManager.service#check the status of Network Manager managed interfaces with:kali@kali:~$ nmcli dev status#configure your Kali machine for DHCP on eth0, changing the `/etc/network/interfaces` file to include:auto eth0iface eth0 inet dhcp#bring down the eth0 interface:kali@kali:~$ sudo ifconfig eth0 down#connect to the wireless network using your wireless USB dongle;#generate a PSK using the following command:kali@kali:~$ wpa_passphrase myssid wpa-password#insert the PSK together with the following into your `/etc/network/interfaces` file:auto wlan0iface wlan0 inet dhcp     wpa-ssid myssid     wpa-psk {whatever the PSK hash was}#spin up the interface:kali@kali:~$ sudo ifup wlan0Home of the Linux course"
+  },
+  
+  {
+    "title": "kali update command &amp; paste",
+    "url": "/posts/kali-update/",
+    "categories": "command&paste",
+    "tags": "kali, linux",
+    "date": "2022-03-10 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "To update Kali, first ensure that /etc/apt/sources.list is properly populated:# See https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/deb http://http.kali.org/kali kali-rolling main contrib non-free# Additional line for source packages# deb-src http://http.kali.org/kali kali-rolling main contrib non-freeSet Italian’s keyboard layout:setxkbmap -layout itkali@kali:~$ sudo apt updatekali@kali:~$kali@kali:~$ sudo apt full-upgrade -yHome of update-kali"
+  },
+  
+  {
+    "title": "Cracking password w/python",
+    "url": "/posts/passwd-crack/",
+    "categories": "teaching",
+    "tags": "cracking, python, password",
+    "date": "2022-02-08 18:34:48 +0100",
+    
+
+
+
+
+
+    "snippet": "This is a python program that prints out all possible products, or permutations, of 4-digit passcodes:from string import digitsfrom itertools import productfor passcode in product(digits, repeat=4):    print(passcode)This one use letters instead of digits:from string import ascii_lettersfrom itertools import productfor passcode in product(ascii_letters, repeat=4):    print(passcode)On a typical keyboard, we’ll have 32 symbols, in addition to 26 uppercase letters, 26 lowercase letters, and 10 numbers, for a total of 94 different symbols. So if we have an 8-character passcode, we’ll be able to choose between 94 x 94 x 94 x 94 x 94 x 94 x 94 x 94 possibilities, which is over 6 quadrillion.from string import ascii_letters, digits, punctuationfrom itertools import productfor passcode in product(ascii_letters + digits + punctuation, repeat=8):    print(passcode)From the very well done Harvard CS50"
+  }
+  
+]
+

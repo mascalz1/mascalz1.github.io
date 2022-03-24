@@ -1,0 +1,244 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>Cyber Security Sanctorum</title>
+  <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
+  <updated>2022-03-21T11:58:05+01:00</updated>
+  <author>
+    <name>mascalz1</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
+  <rights> © 2022 mascalz1 </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>sqlcmd command &amp; paste</title>
+    <link href="http://localhost:4000/posts/sqlcmd/" rel="alternate" type="text/html" title="sqlcmd command &amp; paste" />
+    <published>2022-03-14T10:00:00+01:00</published>
+  
+    <updated>2022-03-14T10:00:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/sqlcmd/</id>
+    <content src="http://localhost:4000/posts/sqlcmd/" />
+    <author>
+      <name>mascalz1</name>
+    </author>
+
+  
+    
+    <category term="command&amp;paste" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      SQLCMD:
+
+sqlcmd -S &amp;lt;server URL&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt;;
+
+1&amp;gt; select @@version
+2&amp;gt; go
+1&amp;gt; select db_name();
+2&amp;gt; go
+1&amp;gt; select host_name();
+2&amp;gt; go
+1&amp;gt; select loginname from syslogins where sysadmin = 1;
+2&amp;gt; go
+1&amp;gt; select name from sys.databases;
+2&amp;gt; go
+1&amp;gt; select name,password_hash from master.sys.sql_logins;
+2&amp;gt; go
+1&amp;gt; select name, CONVERT(INT, IS...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>smbmap command &amp; paste</title>
+    <link href="http://localhost:4000/posts/smbmap/" rel="alternate" type="text/html" title="smbmap command &amp; paste" />
+    <published>2022-03-14T10:00:00+01:00</published>
+  
+    <updated>2022-03-14T10:00:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/smbmap/</id>
+    <content src="http://localhost:4000/posts/smbmap/" />
+    <author>
+      <name>mascalz1</name>
+    </author>
+
+  
+    
+    <category term="command&amp;paste" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Windows Recon: SMBmap host discovery:
+
+Using the smbmap tool to enumerate the target machine service
+
+
+  allows users to enumerate samba share
+  allows file upload/download/delete
+  permission enumeration (writable share, meet Metasploit)
+  etc.
+
+
+smbmap -u guest -p '' -d . -H 10.10.10.50 #access SMB server as guest user;
+
+smbmap -u Administrator -p 'valid_passwd' -d . -H 10.10.10.50 #access SM...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>nmap command &amp; paste</title>
+    <link href="http://localhost:4000/posts/nmap/" rel="alternate" type="text/html" title="nmap command &amp; paste" />
+    <published>2022-03-14T10:00:00+01:00</published>
+  
+    <updated>2022-03-14T10:00:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/nmap/</id>
+    <content src="http://localhost:4000/posts/nmap/" />
+    <author>
+      <name>mascalz1</name>
+    </author>
+
+  
+    
+    <category term="command&amp;paste" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Recon: nmap host discovery:
+
+nmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.
+
+nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.
+
+nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.
+
+nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) ports...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>nmap smb command &amp; paste</title>
+    <link href="http://localhost:4000/posts/nmap-smb/" rel="alternate" type="text/html" title="nmap smb command &amp; paste" />
+    <published>2022-03-14T10:00:00+01:00</published>
+  
+    <updated>2022-03-14T10:00:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/nmap-smb/</id>
+    <content src="http://localhost:4000/posts/nmap-smb/" />
+    <author>
+      <name>mascalz1</name>
+    </author>
+
+  
+    
+    <category term="command&amp;paste" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Windows recon: nmap host discovery:
+
+nmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.
+
+nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.
+
+nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.
+
+nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly ope...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>nmap mssql command &amp; paste</title>
+    <link href="http://localhost:4000/posts/nmap-mssql/" rel="alternate" type="text/html" title="nmap mssql command &amp; paste" />
+    <published>2022-03-14T10:00:00+01:00</published>
+  
+    <updated>2022-03-14T10:00:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/nmap-mssql/</id>
+    <content src="http://localhost:4000/posts/nmap-mssql/" />
+    <author>
+      <name>mascalz1</name>
+    </author>
+
+  
+    
+    <category term="command&amp;paste" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Run Nmap scripts to enumerate the Windows target machine MSSQL service.
+
+nmap -p1433 --script ms-sql-info 10.10.10.50 #get MYSQL info;
+
+nmap -p1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433 10.10.10.50 #check NTLM auth;
+
+nmap -p1433 --script ms-sql-brute --script-args userdb=/root/Desktop/wordlist/common_users.txt,passdb=/root/Desktop/wordlist/common_password.txt 10.10.10...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+
