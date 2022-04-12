@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Cyber Security Sanctorum</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-04-05T10:48:27+02:00</updated>
+  <updated>2022-04-06T12:05:51+02:00</updated>
   <author>
     <name>mascalz1</name>
     <uri>http://localhost:4000/</uri>
@@ -145,13 +145,15 @@ smbmap -u Administrator -p 'valid_passwd' -d . -H 10.10.10.50 #access SM...
 
       Recon: nmap host discovery:
 
+nmap -Pn -n -T5 -sV -sC -p 135,137,139,445,3389 10.10.10.50 # map a windows server
+
 nmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.
 
 nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.
 
 nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.
 
-nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) ports...
+nma...
     </summary>
   
 

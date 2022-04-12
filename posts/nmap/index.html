@@ -487,7 +487,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="121 words">
+  title="170 words">
   <em>1 min</em> read</span>
 
 
@@ -502,6 +502,8 @@
 <div class="post-content">
   <p>Recon: nmap host discovery:</p>
 
+<p><code class="language-plaintext highlighter-rouge">nmap -Pn -n -T5 -sV -sC -p 135,137,139,445,3389 10.10.10.50</code> # map a windows server</p>
+
 <p><code class="language-plaintext highlighter-rouge">nmap -Pn 10.10.10.50</code> # <em>-Pn</em> force nmap to scan ports even if the host seems to be down.</p>
 
 <p><code class="language-plaintext highlighter-rouge">nmap -Pn -p443 10.10.10.50</code> # <em>-p</em> force nmap to scan ports even if filtered is in place.</p>
@@ -510,7 +512,18 @@
 
 <p><code class="language-plaintext highlighter-rouge">nmap 10.10.10.0/20 --open</code> # <em>-open</em> force nmap to only show open (or possibly open) ports</p>
 
-<p><code class="language-plaintext highlighter-rouge">nmap -sV -script banner 10.10.10.50</code> # <em>-open</em> force nmap to only show open (or possibly open) ports</p>
+<p><code class="language-plaintext highlighter-rouge">nmap -sV -script banner 10.10.10.50</code> # banner versioning</p>
+
+<p><code class="language-plaintext highlighter-rouge">nmap -PE -sn 10.10.10.50 --reason --packet-trace --disable-arp-ping</code> # ICMP type 8 (echo request)
+<code class="language-plaintext highlighter-rouge">-PP</code> #ICMP type 13 TIMESTAMP
+<code class="language-plaintext highlighter-rouge">-PM</code> #ICMP type 17 ADDRESS MASK REQUEST</p>
+
+<p><code class="language-plaintext highlighter-rouge">-PS</code> #TCP SYN sweep
+<code class="language-plaintext highlighter-rouge">-PA</code> #TCP ACK sweep</p>
+
+<p><code class="language-plaintext highlighter-rouge">-PU</code> #UDP sweep</p>
+
+<p><code class="language-plaintext highlighter-rouge">nmap -sS -p22 10.10.10.50 --reason --packet-trace --disable-arp-ping</code> #</p>
 
 <p>Check out the nmap <a href="https://nmap.org/zenmap/">GUI</a> version of the Nmap tool with ability to store scan data into the database, plot the network diagram based on the scan result such as services, hostname, etc..</p>
 
@@ -675,117 +688,6 @@
     
     
     
-      
-        
-        
-
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
   
     
     
@@ -825,35 +727,7 @@
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
+      
     
   
     
@@ -1014,10 +888,6 @@
     
     
     
-      
-        
-        
-
   
     
     
@@ -1053,57 +923,6 @@
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-        
-        
-
   
     
     
@@ -1198,6 +1017,235 @@
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
     
   
@@ -1265,21 +1313,6 @@
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
       
         
         
@@ -1321,22 +1354,22 @@
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
     
   
     
@@ -1379,10 +1412,10 @@
       <a class="post-tag" href="/tags/nix/">*nix</a>
     
       
-      <a class="post-tag" href="/tags/kali/">kali</a>
+      <a class="post-tag" href="/tags/dns/">dns</a>
     
       
-      <a class="post-tag" href="/tags/linux/">linux</a>
+      <a class="post-tag" href="/tags/kali/">kali</a>
     
 
     </div>
@@ -1460,6 +1493,19 @@
 
   
     
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
   
 
   
@@ -1973,117 +2019,6 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
     
     
     
-      
-        
-        
-
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
   
     
     
@@ -2123,35 +2058,7 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
+      
     
   
     
@@ -2312,10 +2219,6 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
     
     
     
-      
-        
-        
-
   
     
     
@@ -2351,57 +2254,6 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-        
-        
-
   
     
     
@@ -2496,6 +2348,235 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
     
   
@@ -2563,21 +2644,6 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
       
         
         
@@ -2619,22 +2685,22 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
       
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
     
   
     
@@ -2677,10 +2743,10 @@ nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtere...
       <a class="post-tag" href="/tags/nix/">*nix</a>
     
       
-      <a class="post-tag" href="/tags/kali/">kali</a>
+      <a class="post-tag" href="/tags/dns/">dns</a>
     
       
-      <a class="post-tag" href="/tags/linux/">linux</a>
+      <a class="post-tag" href="/tags/kali/">kali</a>
     
 
     </div>
