@@ -41,24 +41,24 @@
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="cracking password w/python" />
+<meta property="og:title" content="windows command &amp; paste" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This is a python program that prints out all possible products, or permutations, of 4-digit passcodes:" />
-<meta property="og:description" content="This is a python program that prints out all possible products, or permutations, of 4-digit passcodes:" />
-<link rel="canonical" href="http://localhost:4000/posts/passwd-crack/" />
-<meta property="og:url" content="http://localhost:4000/posts/passwd-crack/" />
+<meta name="description" content="From Powershell:" />
+<meta property="og:description" content="From Powershell:" />
+<link rel="canonical" href="http://localhost:4000/posts/winprivesc/" />
+<meta property="og:url" content="http://localhost:4000/posts/winprivesc/" />
 <meta property="og:site_name" content="Cyber Security Sanctorum" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-02-08T18:34:48+01:00" />
+<meta property="article:published_time" content="2022-04-18T11:00:00+02:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="cracking password w/python" />
+<meta property="twitter:title" content="windows command &amp; paste" />
 <meta name="twitter:site" content="@mascalz1" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-08T18:34:48+01:00","datePublished":"2022-02-08T18:34:48+01:00","description":"This is a python program that prints out all possible products, or permutations, of 4-digit passcodes:","headline":"cracking password w/python","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/passwd-crack/"},"url":"http://localhost:4000/posts/passwd-crack/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-04-18T11:00:00+02:00","datePublished":"2022-04-18T11:00:00+02:00","description":"From Powershell:","headline":"windows command &amp; paste","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/winprivesc/"},"url":"http://localhost:4000/posts/winprivesc/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>cracking password w/python | Cyber Security Sanctorum
+  <title>windows command & paste | Cyber Security Sanctorum
   </title>
 
   <!--
@@ -291,7 +291,7 @@
         
 
           
-            <span>cracking password w/python</span>
+            <span>windows command & paste</span>
           
 
         
@@ -424,7 +424,7 @@
 
 
 
-<h1 data-toc-skip>cracking password w/python</h1>
+<h1 data-toc-skip>windows command & paste</h1>
 
 <div class="post-meta text-muted">
 
@@ -454,12 +454,12 @@
 -->
 
 <em class="timeago"
-    data-ts="1644341688"
+    data-ts="1650272400"
     
       data-toggle="tooltip" data-placement="bottom" data-tooltip-df="llll"
     
     >
-  2022-02-08
+  2022-04-18
 </em>
 
       </span>
@@ -487,7 +487,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="139 words">
+  title="35 words">
   <em>1 min</em> read</span>
 
 
@@ -500,32 +500,17 @@
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-  <p>This is a python program that prints out all possible products, or permutations, of 4-digit passcodes:</p>
+  <p>From Powershell:</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">digits</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<p><code class="language-plaintext highlighter-rouge">PS C:\Users\john&gt; cmdkey /list</code>;</p>
 
-<span class="k">for</span> <span class="n">passcode</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">passcode</span><span class="p">)</span></code></pre></figure>
+<p>Check the stored credential (eg. administrator) and run:</p>
 
-<p>This one use letters instead of digits:</p>
+<p><code class="language-plaintext highlighter-rouge">PS C:\Users\john&gt; runas.exe /savedcred /user:administrator cmd</code>; run command prompt as administrator.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">ascii_letters</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<p>enjoy the escalation from john to admnistrator ;)</p>
 
-<span class="k">for</span> <span class="n">passcode</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">ascii_letters</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">passcode</span><span class="p">)</span></code></pre></figure>
-
-<p>On a typical keyboard, we’ll have 32 symbols, in addition to 26 uppercase letters, 26 lowercase letters, and 10 numbers, for a total of 94 different symbols. So if we have an 8-character passcode, we’ll be able to choose between 94 x 94 x 94 x 94 x 94 x 94 x 94 x 94 possibilities, which is over 6 quadrillion.</p>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">ascii_letters</span><span class="p">,</span> <span class="n">digits</span><span class="p">,</span> <span class="n">punctuation</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-
-<span class="k">for</span> <span class="n">passcode</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">digits</span> <span class="o">+</span> <span class="n">punctuation</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">passcode</span><span class="p">)</span></code></pre></figure>
-
-<p>From the very well done Harvard <a href="https://cs50.harvard.edu/x/2022/weeks/cybersecurity/">CS50</a></p>
-
+<p><code class="language-plaintext highlighter-rouge">C:\Windows\system32&gt; whoami</code>;</p>
 
 </div>
 
@@ -536,7 +521,7 @@
   <div class="post-meta mb-3">
     <i class="far fa-folder-open fa-fw mr-1"></i>
     
-      <a href='/categories/teaching/'>teaching</a>
+      <a href='/categories/command-paste/'>command&paste</a>
   </div>
   
 
@@ -545,14 +530,11 @@
   <div class="post-tags">
     <i class="fa fa-tags fa-fw mr-1"></i>
       
-      <a href="/tags/cracking/"
-          class="post-tag no-text-decoration" >cracking</a>
+      <a href="/tags/privilege/"
+          class="post-tag no-text-decoration" >privilege</a>
       
-      <a href="/tags/python/"
-          class="post-tag no-text-decoration" >python</a>
-      
-      <a href="/tags/password/"
-          class="post-tag no-text-decoration" >password</a>
+      <a href="/tags/escalation/"
+          class="post-tag no-text-decoration" >escalation</a>
       
   </div>
   
@@ -586,19 +568,19 @@
 
     
       
-        <a href="https://twitter.com/intent/tweet?text=cracking password w/python - Cyber Security Sanctorum&amp;url=http://localhost:4000/posts/passwd-crack/" data-toggle="tooltip" data-placement="top"
+        <a href="https://twitter.com/intent/tweet?text=windows command &amp; paste - Cyber Security Sanctorum&amp;url=http://localhost:4000/posts/winprivesc/" data-toggle="tooltip" data-placement="top"
           title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
           <i class="fa-fw fab fa-twitter"></i>
         </a>
     
       
-        <a href="https://www.facebook.com/sharer/sharer.php?title=cracking password w/python - Cyber Security Sanctorum&amp;u=http://localhost:4000/posts/passwd-crack/" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.facebook.com/sharer/sharer.php?title=windows command &amp; paste - Cyber Security Sanctorum&amp;u=http://localhost:4000/posts/winprivesc/" data-toggle="tooltip" data-placement="top"
           title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
           <i class="fa-fw fab fa-facebook-square"></i>
         </a>
     
       
-        <a href="https://t.me/share/url?url=http://localhost:4000/posts/passwd-crack/&amp;text=cracking password w/python - Cyber Security Sanctorum" data-toggle="tooltip" data-placement="top"
+        <a href="https://t.me/share/url?url=http://localhost:4000/posts/winprivesc/&amp;text=windows command &amp; paste - Cyber Security Sanctorum" data-toggle="tooltip" data-placement="top"
           title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
           <i class="fa-fw fab fa-telegram"></i>
         </a>
@@ -1510,319 +1492,319 @@
   
 
   
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-  
     
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
 
 
 
@@ -1831,38 +1813,6 @@
 
 <!-- Fill with the other newlest posts  -->
 
-
-
-
-  
-    
-    
-      
-      
-        
-        
-        
-      
-    
-  
-    
-    
-      
-      
-        
-        
-        
-      
-    
-  
-    
-    
-      
-      
-        
-        
-        
-          
 
 
 
@@ -1876,7 +1826,7 @@
       
       
       <div class="card">
-        <a href="/posts/winprivesc/">
+        <a href="/posts/aircrack-ng/">
           <div class="card-body">
             <!--
   Date format snippet
@@ -1884,13 +1834,13 @@
 -->
 
 <em class="timeago small"
-    data-ts="1650272400"
+    data-ts="1647244800"
     
     >
-  2022-04-18
+  2022-03-14
 </em>
 
-            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>windows command & paste</h3>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>aircrack-ng command & paste</h3>
             <div class="text-muted small">
               <p>
                 
@@ -1899,13 +1849,11 @@
 
 
 
-                From Powershell:
+                Use aircrack-ng to assess WiFi network security:
 
-PS C:\Users\john&amp;gt; cmdkey /list;
+aircrack-ng -w password-lists.txt -b BSSID recorded_traffic.pcap #figure out the passphrase using the password-lists.txt dictionary
 
-Check the stored credential (eg. administrator) and run:
-
-PS C:\Users\john&amp;gt; runas.exe /savedcred /user:administrator cmd; run command prompt...
+Home of the to...
               </p>
             </div>
           </div>
@@ -1915,7 +1863,7 @@ PS C:\Users\john&amp;gt; runas.exe /savedcred /user:administrator cmd; run comma
       
       
       <div class="card">
-        <a href="/posts/sqlcmd/">
+        <a href="/posts/iis/">
           <div class="card-body">
             <!--
   Date format snippet
@@ -1929,7 +1877,7 @@ PS C:\Users\john&amp;gt; runas.exe /savedcred /user:administrator cmd; run comma
   2022-03-14
 </em>
 
-            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>sqlcmd command & paste</h3>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>IIS command & paste</h3>
             <div class="text-muted small">
               <p>
                 
@@ -1938,17 +1886,11 @@ PS C:\Users\john&amp;gt; runas.exe /savedcred /user:administrator cmd; run comma
 
 
 
-                SQLCMD:
+                Run Nmap scripts to enumerate the Windows target machine IIS service.
 
-sqlcmd -S &amp;lt;server URL&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt;;
+nmap -p80 -sV --script http-enum 10.10.10.50 #get IIS info and potentially interesting folders;
 
-{% highlight terminal %}
-1&amp;gt; select @@version
-2&amp;gt; go
-1&amp;gt; select db_name();
-2&amp;gt; go
-1&amp;gt; select host_name();
-2...
+nmap -p80 -sV --script http-h...
               </p>
             </div>
           </div>
@@ -1958,7 +1900,7 @@ sqlcmd -S &amp;lt;server URL&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;pass
       
       
       <div class="card">
-        <a href="/posts/smbmap/">
+        <a href="/posts/mssql-cli/">
           <div class="card-body">
             <!--
   Date format snippet
@@ -1972,7 +1914,7 @@ sqlcmd -S &amp;lt;server URL&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;pass
   2022-03-14
 </em>
 
-            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>smbmap command & paste</h3>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>mssql-cli command & paste</h3>
             <div class="text-muted small">
               <p>
                 
@@ -1981,14 +1923,11 @@ sqlcmd -S &amp;lt;server URL&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;pass
 
 
 
-                Windows Recon: SMBmap host discovery:
+                Use the command below to connect to your MSSQL server:
 
-Using the smbmap tool to enumerate the target machine service
+mssql-cli -S &amp;lt;server URL&amp;gt; -d &amp;lt;database name&amp;gt; -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt;;
 
-
-  allows users to enumerate samba share
-  allows file upload/download/delete
-  permission enum...
+Use the MSSQL-CLI to connect to the remote...
               </p>
             </div>
           </div>
@@ -2007,17 +1946,17 @@ Using the smbmap tool to enumerate the target machine service
 
 <div class="post-navigation d-flex justify-content-between">
   
-  <span class="btn btn-outline-primary disabled"
+  <a href="/posts/sqlcmd/" class="btn btn-outline-primary"
     prompt="Older">
-    <p>-</p>
-  </span>
+    <p>sqlcmd command & paste</p>
+  </a>
   
 
   
-  <a href="/posts/powershell/" class="btn btn-outline-primary"
+  <span class="btn btn-outline-primary disabled"
     prompt="Newer">
-    <p>power shell command & paste</p>
-  </a>
+    <p>-</p>
+  </span>
   
 
 </div>

